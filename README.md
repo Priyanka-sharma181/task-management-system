@@ -84,18 +84,34 @@ curl -X POST http://localhost:3001/auth/login \
   -d '{"email":"user@example.com","password":"password123"}'
 ```
 
-### Create Task (with JWT token)
+### Get All Tasks
+```bash
+curl -X GET http://localhost:3001/tasks \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -H "Content-Type: application/json"
+```
+
+### Create Task
 ```bash
 curl -X POST http://localhost:3001/tasks \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -d '{"title":"Complete project","description":"Finish the NestJS backend","status":"in_progress"}'
+  -d '{"title":"Complete project","description":"Finish the NestJS backend","status":"in_progress","dueDate":"2025-12-31T23:59:59.000Z"}'
 ```
 
-### Get All Tasks
+### Update Task
 ```bash
-curl -X GET http://localhost:3001/tasks \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+curl -X PUT http://localhost:3001/tasks/1 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"title":"Updated task title","status":"completed"}'
+```
+
+### Delete Task
+```bash
+curl -X DELETE http://localhost:3001/tasks/1 \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -H "Content-Type: application/json"
 ```
 
 ## Technology Stack
