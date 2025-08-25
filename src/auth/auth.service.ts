@@ -8,6 +8,7 @@ import { User } from '../users/entities/user.entity';
 export class AuthService {
   constructor(
     private usersService: UsersService,
+    
     private jwtService: JwtService,
   ) {}
 
